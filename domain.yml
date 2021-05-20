@@ -1,0 +1,114 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - inform
+  - search_provider
+  - round_two
+  - out_of_scope
+  - confirm
+
+entities:
+  - pincode
+  - category
+  - same_pincode
+  - same_category
+
+slots:
+    pincode:
+      type: unfeaturized
+    category:
+      type: unfeaturized
+
+forms:
+  - pincode_category_form
+
+actions:
+  - action_for_same_pincode
+  - action_for_same_category
+
+responses:
+  utter_greet:
+  - text: "Hi! I'm a bot. Looks like a great day to read up on Covid Reources. Would you prefer starting by listing the pincode and the required resource name?"
+  
+  utter_ask_pincode:
+  - text: "Please enter the pincode"
+
+  utter_ask_category:
+  - text: "Select the resouce information you are looking for around {pincode}"
+    #move the button generation into actions.py and dynamically generate based on api
+    buttons:
+    - title: "CoVID-19 Testing Lab"
+      payload: '/inform{"category":"CoVID-19 Testing Lab"}'
+    - title: "Free Food"
+      payload: '/inform{"category":"Free Food"}'
+    - title: "Fundraisers"
+      payload: '/inform{"category":"Fundraisers"}'
+    - title: "Hospitals and Centers"
+      payload: '/inform{"category":"Hospitals and Centers"}'
+    - title: "Police"
+      payload: '/inform{"category":"Police"}'
+    - title: "Government Helpline"
+      payload: '/inform{"category":"Government Helpline"}'
+    - title: "Mental well being and Emotional Support"
+      payload: '/inform{"category":"Mental well being and Emotional Support"}'
+    - title: "Accommodation and Shelter Homes"
+      payload: '/inform{"category":"Accommodation and Shelter Homes"}'
+    - title: "Senior Citizen Support"
+      payload: '/inform{"category":"Senior Citizen Support"}'
+    - title: "Transportation"
+      payload: '/inform{"category":"Transportation"}'
+    - title: "Community Kitchen"
+      payload: '/inform{"category":"Community Kitchen"}'
+    - title: "Ambulance"
+      payload: '/inform{"category":"Ambulance"}'
+    - title: "Fire Brigade"
+      payload: '/inform{"category":"Fire Brigade"}'
+    - title: "Quarantine Facility"
+      payload: '/inform{"category":"Quarantine Facility"}' 
+    - title: "Helpline for Cyclone Amphan"
+      payload: '/inform{"category":"Helpline for Cyclone Amphan"}' 
+    - title: "Fever Clinic"
+      payload: '/inform{"category":"Fever Clinic"}' 
+
+  utter_did_that_help:
+  - text: "Did that help?"
+
+  utter_ask_round_two:
+  - text: Also you can continue the search by typing 'corona help'
+
+  utter_happy:
+  - text: "Great, carry on! you know the drill ... pincode and category"
+
+  utter_ask_same_pincode:
+  - text: "Do you want to continue searching for resources in and around {pincode}"
+    buttons:
+    - title: "Yes"
+      payload: '/confirm{"same_pincode": "yes"}'
+    - title: "No"
+      payload: '/confirm{"same_pincode": "no"}' 
+
+  utter_ask_same_category:
+  - text: "Do you want to continue the search for {category}?"
+    buttons:
+    - title: "Yes"
+      payload: '/confirm{"same_category": "yes"}'
+    - title: "No"
+      payload: '/confirm{"same_category": "no"}' 
+
+  utter_confirm_denial:
+  - text: "Are you sure you want to cancel the search?"
+
+  utter_goodbye:
+  - text: "Bubye! have a great day!!"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
