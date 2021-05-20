@@ -1,4 +1,4 @@
-## success all queries in one go no nonsense part 1 plus round 2 of querying
+## success all queries in one go plus round 2 of querying
 * greet
   - utter_greet
 * search_provider
@@ -35,7 +35,7 @@
   - action_deactivate_form
   - utter_goodbye
 
-## success all queries in one go no implicit no round 2 of querying
+## success all queries in one go implicit no round 2 of querying
 * greet
   - utter_greet
 * search_provider
